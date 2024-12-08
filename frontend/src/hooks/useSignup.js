@@ -4,17 +4,17 @@ import toast from 'react-hot-toast'
 const useSignup = () => {
   const [loading,setLoading] = useState(false)
 
-  const signup = async({fullName , username, password, confirmPasssword, gender}) =>{
-   const success = handleInputErrors({fullName , username, password, confirmPasssword, gender})
+  const signup = async({fullName , username, password, confirmPassword, gender}) =>{
+   const success = handleInputErrors({fullName , username, password, confirmPassword, gender})
     if(!success) return
-
+       
     setLoading(true)
     try {
-            const res = await fetch("http://localhost:5000/api/auth/signup",
+            const res = await fetch("/api/auth/signup",
                 {
                     method: "POST",
                     headers:{"Content-Type":"application/json"},
-                    body: JSON.stringify({fullName , username, password, confirmPasssword, gender})
+                    body: JSON.stringify({fullName , username, password, confirmPassword, gender})
                 }
             )
 
@@ -26,19 +26,21 @@ const useSignup = () => {
         setLoading(false)
     }
 
-    return {loading,signup}
+    
+    }
+    return { loading ,signup }
 }
-}
+
 
 export default useSignup
 
-function handleInputErrors({fullName , username, password, confirmPasssword, gender}){
-    if(!username || !fullName || !password || !confirmPasssword || !gender){
+function handleInputErrors({fullName , username, password, confirmPassword, gender}){
+    if(!username || !fullName || !password || !confirmPassword || !gender){
         toast.error("Please fill all the fields")
         return false
     }
 
-    if(password !== confirmPasssword){
+    if(password !== confirmPassword){
          toast.error("Passwords do not match")
          return false
     }
