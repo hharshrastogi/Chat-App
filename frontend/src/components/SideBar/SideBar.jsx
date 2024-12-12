@@ -12,7 +12,7 @@ const SideBar = () => {
 
         <Conversations/>
 
-        <LogoutBtn/>
+        {/* <LogoutBtn/>  Add Back later */}
     </div>
   )
 }
