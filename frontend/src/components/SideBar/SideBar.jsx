@@ -5,14 +5,14 @@ import LogoutBtn from './LogoutBtn.jsx'
 
 const SideBar = () => {
   return (
-    <div  className='border-r border-b border-slate-800 p-4 flex flex-col'>
+    <div  className='border-r border-b border border-slate-800 p-4 flex flex-col'>
         <SearchInput/>
 
         <div className='divider px-3'></div>
 
         <Conversations/>
 
-        {/* <LogoutBtn/>  Add Back later */}
+        <LogoutBtn/>  
     </div>
   )
 }
